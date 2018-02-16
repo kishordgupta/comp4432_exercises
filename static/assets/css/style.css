@@ -1,0 +1,358 @@
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+}
+td{
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(odd){color: #ffffff}
+th{
+    background-color: #4CAF50;
+    color: white;
+}
+/*--------
+Normalize
+--------- */
+.hide {
+    display: none !important;
+}
+.no-border {
+    border: 0 !important;
+}
+.no-padding {
+    padding: 0 !important;
+}
+.no-margin {
+    margin: 0 !important;
+}
+.no-shadow {
+    box-shadow: none !important;
+}
+.auto-height{
+    height: auto;
+    min-height: 0;
+}
+.list-unstyled,
+.chart-legend,
+.contacts-list,
+.users-list,
+.mailbox-attachments {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.list-group-unbordered > .list-group-item {
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+.flat {
+    border-radius: 0 !important;
+}
+.position-static {
+    position: static !important;
+}
+.inline-block{
+    display: inline-block;
+}
+.no-pad-top {
+    padding-top: 0;
+}
+.padding{
+    padding: 10px;
+}
+.margin-min {
+    margin: 10px;
+}
+.margin-mid {
+    margin: 20px;
+}
+.margin-max {
+    margin: 30px;
+}
+.margin-top-min {
+    margin-top: 10px;
+}
+.margin-top-mid {
+    margin-top: 20px;
+}
+.margin-top-max {
+    margin-top: 30px;
+}
+.margin-top-none {
+    margin-top: 0;
+}
+.margin-bottom-min {
+    margin-bottom: 10px;
+}
+.margin-bottom-mid {
+    margin-bottom: 20px;
+}
+.margin-bottom-max {
+    margin-bottom: 30px;
+}
+.margin-bottom-none {
+    margin-bottom: 0;
+}
+.margin-top-bottom-min {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.margin-top-bottom-mid {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.margin-top-bottom-max {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.margin-top-bottom-none {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.margin-left-min{
+    margin-left: 10px;
+}
+.margin-left-mid{
+    margin-left: 20px;
+}
+.min-height-auto {
+    min-height: auto;
+}
+.white{
+    color: #fff;
+}
+.bg-white{
+    color: #fff;
+}
+.red{
+    color: #ED1C24;
+}
+.bg-red{
+    color: #ED1C24;
+}
+.black{
+    color:#000;
+}
+.bg-black{
+    color:#000;
+}
+.gray{
+    color: #969696;
+}
+.text-center{
+    text-align: center;
+}
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}
+.text-left{
+    text-align: left;
+}
+.text-right{
+    text-align: right;
+}
+/*--------
+Normalize
+--------- */
+.bg-image{
+    background-image: url("../images/bg.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: table;
+    height: 100vh;
+    position: relative;
+    width: 100%;
+    border-top: 15px solid #F4AE1B;
+}
+.logo .sol-logo {
+    margin: 10px auto;
+    width: 100px;
+}
+.login-section {
+    margin: 7%;
+}
+.login-form.form-left {
+    padding-right: 100px;
+    height: 45vh;
+}
+a {
+    color: #FFF;
+    text-decoration: none;
+}
+a:hover {
+    color: #F5AD1B;
+}
+.login-form.form-right {
+    padding-left: 100px;
+}
+.login-border-right {
+    border-right: 1px solid #F4AE1B;
+}
+.form-title {
+    color: #FFF;
+    border-bottom: 1px solid #4F817E;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+.login-form .form-group input {
+    height: 65px;
+    width: 100%;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.login-form .form-group .checkbox input {
+    width: auto;
+    height: auto;
+}
+.login-form.form-right .btn-group-search {
+    height: 65px;
+}
+.form-control.btn-group-search:focus, .form-control.btn-group-search:hover {
+    border-color: #F4AE1B;
+}
+.btn.btn-default.dropdown-toggle.btn-group-search {
+    background: #1C453F;
+    color: #F4AE1B;
+    width: 65px;
+}
+.btn.btn-default.dropdown-toggle.btn-group-search:hover, .btn.btn-default.dropdown-toggle.btn-group-search:focus {
+    border-color: #F5AD1B;
+}
+.btn.btn-warning.btn-group-search {
+    width: 65px;
+    font-size: 26px;
+}
+.login-form.form-right .dropdown-menu {
+    width: 320px;
+    background: #1C453F;
+    border-color: #F5AD1B;
+}
+.login-form.form-right .dropdown-menu li{
+    background: #1C453F;
+    height: 50px;
+}
+.login-form.form-right .dropdown-menu li.divider{
+    background: #F5AD1B;
+    height: 1px;
+}
+.login-form.form-right .dropdown-menu li a{
+    background: #1C453F;
+    color: #F5AD1B;
+}
+/*placeholder with browser support*/
+.login-form .form-group input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #fff;
+}
+.login-form .form-group input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #fff;
+}
+.login-form .form-group input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #fff;
+}
+.login-form .form-group input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #fff;
+}
+.login-form .form-group input::-ms-input-placeholder { /* Microsoft Edge */
+    color:    #fff;
+}
+.login-form .form-group input::placeholder { /* Most modern browsers support this now. */
+    color:    #fff;
+}
+/*placeholder hover and focus with browser support*/
+.login-form .form-group input:hover::-webkit-input-placeholder, .login-form .form-group input:focus::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #000;
+}
+.login-form .form-group input:hover:-moz-placeholder, .login-form .form-group input:focus:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #000;
+}
+.login-form .form-group input:hover::-moz-placeholder, .login-form .form-group input:focus::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #000;
+}
+.login-form .form-group input:hover:-ms-input-placeholder, .login-form .form-group input:focus:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #000;
+}
+.login-form .form-group input:hover::-ms-input-placeholder, .login-form .form-group input:focus::-ms-input-placeholder { /* Microsoft Edge */
+    color:    #000;
+}
+.login-form .form-group input:hover::placeholder, .login-form .form-group input:focus::placeholder { /* Most modern browsers support this now. */
+    color:    #000;
+}
+.login-form .form-group input:hover, .login-form .form-group input:focus {
+    background: #fff;
+    border: 1px solid #F4AE1B;
+    color: #000;
+}
+.login-btn {
+    background: #F4AE1B;
+    color: #000;
+    height: 60px;
+    float: right;
+    padding: 0 35px;
+    font-size: 25px;
+}
+.login-btn:hover, .login-btn:active, .login-btn:focus{
+    background: #DD9A0F;
+}
+.mcq-exam-btn {
+    background: #F4AE1B;
+    font-size: 34px;
+    font-weight: 700;
+    border-radius: 30px;
+    padding: 5px 25px;
+    margin-bottom: 35px;
+}
+.form-right .form-title {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+.footer-bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    margin-top: 10px;
+}
+@media only screen and (max-width: 1366px) {
+}
+@media only screen and (max-width: 1024px) {
+}
+@media only screen and (max-width: 960px) {
+    .login-form.form-left {
+        height: auto;
+        padding-right: 0;
+        margin-bottom: 80px;
+    }
+    .login-form.form-right {
+        padding-left: 0;
+    }
+    .login-border-right {
+        border-right: none;
+    }
+    .footer-bottom {
+        position: relative;
+        margin-top: 20px;
+    }
+}
+@media only screen and (max-width: 732px) {
+}
+@media only screen and (max-width: 414px) {
+    .login-form.form-left {
+        margin-bottom: 125px;
+    }
+}
+@media only screen and (max-width: 360px) {
+}
+@media only screen and (max-width: 320px) {
+}

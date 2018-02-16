@@ -1,0 +1,115 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}MCQ EXAM LAB{% endblock %}
+
+{% block head %}
+<!-- SITE TITTLE -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCQ EXAM LAB</title>
+
+<!-- CSS STYLE -->
+<link href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='assets/css/font-awesome.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='assets/css/jquery-ui.min.css') }}" rel="stylesheet">
+<!-- CUSTOM CSS -->
+<link href="{{ url_for('static', filename='assets/css/style.css') }}" rel="stylesheet">
+<!-- FAVICON -->
+<!-- JAVASCRIPTS -->
+<script src="{{ url_for('static', filename='assets/js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/script.js') }}"></script>
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<body class="bg-image">
+    <section class="logo">
+        <img class="img img-responsive sol-logo" src="{{ url_for('static', filename='assets/images/memphis.png') }}">
+    </section>
+    <section class="login-section">
+        <div class="row">
+            <div class="col-md-6 login-form form-left login-border-right">
+                <h2 class="form-title text-center">Signin</h2>
+                <form class="form" role="form" id="login_form">
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" id="username" placeholder="User Name" required autocomplete="off" autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" autocomplete="off" required>
+                    </div>
+                    <div class="form-group">
+                        <div id="remember" class="checkbox float-left">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary login-btn float-right" id="login"><strong>Sign In</strong></button>
+                    </div>
+                </form>
+                <p id="auth_stat"></p>
+            </div>
+            <div class="col-md-6 login-form form-right">
+                <button class="btn btn-warning mcq-exam-btn white">MCQ EXAM</button>
+                <h2 class="form-title">Search Availble subject</h2>
+                <form role="form" method="post" action="javascript:void(0)" >
+                    <div class="input-group">
+                        <input type="hidden" name="search_param" value="all" id="search_param">         
+                        <input type="text" class="form-control btn-group-search" name="searchValue" id="term" placeholder="Search term...">
+                        <span class="input-group-btn">
+                                <button class="btn btn-warning btn-group-search" type="button" id="search"><span class="fa fa-search"></span></button>
+                            </span>
+                        </span>
+                
+                    </div>
+                </form>
+                <br><br>
+
+<table id="results" class = "table">
+
+<p id="stat"></p>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Bottom -->
+    {% block footer %}
+    <footer class="footer-bottom">
+            <!-- Container Start --> <br><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-12 text-center margin-top-mid">
+                        <!-- Copyright -->
+                        <div class="copyright white">
+                            <p class="">Copyright © <a href="http://www.cs.memphis.edu/"> Center for Information Assurance.</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Container End -->
+            <!-- To Top -->
+            <!--            <div class="top-to">
+                            <a id="top" class="" href="#"><i class="fa fa-angle-up"></i></a>
+                        </div>-->
+        </footer>
+    {% endblock %}
+</body>
+{% endblock %}

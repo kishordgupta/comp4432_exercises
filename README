@@ -1,0 +1,22 @@
+Setup
+----------------------------
+Step 1: Install Docker
+If you don't have Docker installed already, go to https://www.docker.com/community-edition and download Docker for your OS
+*Windows users must enable Hyper-V. Alternatively, you can use Docker toolbox to run Docker containers*
+
+Step 2: Pull and run the container
+docker run -p 5000:80 uofmcomp4432/exercise1:v1
+
+Step 3: Do the exercise
+Browse to http://localhost:5000
+
+Instructions
+-----------------------------
+Your goal for this exercise is to run some SQL injection on this web app, steal whatever passwords you can, crack those passwords, and use one of them to login to the app.
+
+Take a screenshot of each of these steps: sql query that get's you the passwords, successful crack of at least 1 password, successful login.
+
+Your submission should include a writeup with *details* on what you did to solve this problem and how it should be fixed. You should note *ANY* weaknesses that you find.
+
+
+You will probably find some bugs or missing features, so report those also.

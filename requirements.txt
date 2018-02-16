@@ -1,0 +1,6 @@
+Flask
+flask-wtf
+flask-sessions
+flask-login
+flask-bootstrap
+
