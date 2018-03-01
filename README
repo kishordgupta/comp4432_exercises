@@ -20,3 +20,14 @@ Your submission should include a writeup with *details* on what you did to solve
 
 
 You will probably find some bugs or missing features, so report those also.
+
+
+Other information about Docker
+------------------------------
+To stop a container: *ctrl-c does not stop container for Windows users*
+List docker processes: 
+	docker ps
+	or
+	docker container ls
+Stop running container:
+	docker stop <container_id>

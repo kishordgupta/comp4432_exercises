@@ -1,40 +1,66 @@
 import sqlite3, os, hashlib, random
-from flask import Flask, jsonify, render_template, render_template_string, request, g
+from flask import Flask, flash, jsonify, url_for, redirect, render_template, render_template_string, request, session, g
 from forms import SearchForm
 from flask_bootstrap import Bootstrap
+from flask_login import LoginManager
+import datetime
+import os
 
 
 app = Flask(__name__)
 Bootstrap(app)
 app.database = "quiz.db"
-app.config['SECRET_KEY'] = "extremely_secure_password"
+app.config['SECRET_KEY'] = 'thekey'#os.urandom(20)
+app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=7)
+
+disallowed_chars = []
 
 @app.route('/')
+@app.route('/index')
 def index():
     form = SearchForm(csrf_enabled=False)
     return render_template('index.html', form=form)
 
 @app.route('/profile')
-def restock():
+def profile():
+    print(session)
+    if 'username' not in session:
+        flash('Please login')
+        return redirect(url_for('index'))
     return render_template('profile.html')
+
+#@app.route('/admin')
+#def admin():
+#    if 'username' not in session: 
+
 
 #API routes
 @app.route('/api/login', methods=['POST'])
 def loginAPI():
     if request.method == 'POST':
-        uname, pword = (request.json['username'],request.json['password'])
+        uname, pword = (request.json['username'], request.json['password'])
         g.db = connect_db()
         cur = g.db.execute("SELECT password FROM users WHERE username = '%s'" %(uname,))
         stored_pw = cur.fetchone()
         if stored_pw:
             if check_pass(stored_pw[0], pword):
                 result = {'status': 'success'}
+                session['username'] = uname
+                session['garbage'] = 13844774
+                session.permanant = True
+                print(session)
             else:
                 result = {'status': 'fail'}
         else:
             result = {'status': 'fail'}
         g.db.close()
         return jsonify(result)
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('index'))
+
 
 @app.route('/api/search/<item>', methods=['GET'])
 def searchAPI(item):
@@ -91,6 +117,11 @@ def hash_pass(pw, salt=None):
     m = hashlib.sha256()
     m.update(salted_pw)
     return "{}:{}".format(m.hexdigest(), salt)
+
+def sanitize(input):
+    for x in disallowed_chars:
+        input = input.replace(x, "")
+    return input
 
 if __name__ == "__main__":
 
@@ -252,4 +283,4 @@ if __name__ == "__main__":
             (32,'COMP 4920','Wireless and Mobile Security','Wireless and Mobile Security')""")
             connection.commit()
 
-    app.run(host='0.0.0.0', port=80) # runs on machine ip address to make it visible on netowrk
+    app.run(host='0.0.0.0', port=5000) # runs on machine ip address to make it visible on netowrk
