@@ -10,7 +10,7 @@ import os
 app = Flask(__name__)
 Bootstrap(app)
 app.database = "quiz.db"
-app.config['SECRET_KEY'] = 'thekey'#os.urandom(20)
+app.config['SECRET_KEY'] = os.urandom(20)
 app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=7)
 
 disallowed_chars = []
@@ -29,9 +29,15 @@ def profile():
         return redirect(url_for('index'))
     return render_template('profile.html')
 
-#@app.route('/admin')
-#def admin():
-#    if 'username' not in session: 
+@app.route('/addCourse')
+def admin():
+    if 'username' not in session:
+        flash('Please login')
+        return redirect(url_for('index'))
+    if session['username'] != 'admin':
+        flash('You must be an administrator to access this page')
+        return redirect(url_for('index'))
+    return render_template('courses.html')
 
 
 #API routes
@@ -46,7 +52,6 @@ def loginAPI():
             if check_pass(stored_pw[0], pword):
                 result = {'status': 'success'}
                 session['username'] = uname
-                session['garbage'] = 13844774
                 session.permanant = True
                 print(session)
             else:
@@ -74,6 +79,29 @@ def searchAPI(item):
     g.db.close()
 
     return jsonify(data)
+
+@app.route('/api/addCourse', methods=['POST'])
+def addCourse():
+    if request.method == 'POST':
+        print(session)
+        if 'username' not in session and session['username'] != 'admin':
+            result = {'status': 'fail', 'message': 'Authorization required'}
+        else:
+            cnum, cname, cdesc = (request.json['courseNumber'], request.json['courseName'], request.json['courseDescription'])
+            if cnum == "" or cname == "" or cdesc == "":
+                result = {'status': 'fail', 'message': 'All fields required'}
+            else:
+                try:
+                    g.db = connect_db()
+                    g.db.execute("INSERT INTO Courses(course_number, course_name, description) VALUES(?,?,?)", (cnum, cname, cdesc))
+                    g.db.commit()
+                    g.db.close()
+                    result = {'status': 'success', 'message':'Course added successfully'}
+                except sqlite3.OperationalError:
+                    result = {'status': 'fail', 'message':'Failed to add course'}
+    else:
+        result = {'status': 'fail', 'message':'Invalid request'}
+    return jsonify(result)
 
 @app.errorhandler(404)
 def page_not_found_error(error):
@@ -169,7 +197,8 @@ if __name__ == "__main__":
             (12,'Maynard','Keenan','toolshed','maynard@undertow.net','54afc913205dd4f42fba36e29660eed52c2ef24c56f3afc8984570e4d2f1c8c7:115','',''),
             (13,'Winston','Wolf','prblmslvr','idrvfast@whatever.com','b09432cf4fa7d311612e47f9acd1eecf77ed5792d5b458aeabce104916f8ad8d:193','',''),
             (14,'Jules','Winnfield','ezekiel2517','shepherd@arf.net','a0a7cdb46844a7a61b0905527cc77683fe06fdd0074975474641019218cc2319:240','',''),
-            (15,'Vincent','Vega','royalewithcheese','vegan@orly.com','da51d43d9d654cd1c7bdb06e831fbbdd01731bc64c7e3c9f8d4c7f1e85234e79:96','','')""")
+            (15,'Vincent','Vega','royalewithcheese','vegan@orly.com','da51d43d9d654cd1c7bdb06e831fbbdd01731bc64c7e3c9f8d4c7f1e85234e79:96','',''),
+            (16,'Admin','Admin','admin','admin@admin.admin','03c23d994c523826c5d496b3f040cf31a2c819282909a4c80675ed63ae7521c3:104','','')""")
             c.execute("""CREATE TABLE IF NOT EXISTS `Quizzes` (
                 `q_id`	INTEGER NOT NULL,
                 `c_id`	integer NOT NULL,
@@ -283,4 +312,4 @@ if __name__ == "__main__":
             (32,'COMP 4920','Wireless and Mobile Security','Wireless and Mobile Security')""")
             connection.commit()
 
-    app.run(host='0.0.0.0', port=5000) # runs on machine ip address to make it visible on netowrk
+    app.run(host='0.0.0.0', port=80) # runs on machine ip address to make it visible on netowrk

@@ -1,0 +1,72 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}MCQ EXAM LAB{% endblock %}
+
+{% block head %}
+        <!-- SITE TITTLE -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>CFIA</title>
+
+        <!-- CSS STYLE -->
+       <link href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='assets/css/font-awesome.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='assets/css/jquery-ui.min.css') }}" rel="stylesheet">
+<!-- CUSTOM CSS -->
+<link href="{{ url_for('static', filename='assets/css/style.css') }}" rel="stylesheet">
+<!-- FAVICON -->
+<!-- JAVASCRIPTS -->
+<script src="{{ url_for('static', filename='assets/js/jquery.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/script.js') }}"></script>
+        <!-- JAVASCRIPTS -->
+  {% endblock %}
+
+{% block content %}
+    <body class="bg-image">
+        <section class="logo">
+            <img class="img img-responsive sol-logo" src="{{ url_for('static', filename='assets/images/memphis.png') }}">
+        </section>
+        <section class="login-section">
+            <div class="row">
+                <div class="col-md-6 login-form col-md-offset-3">
+				  <h2 class="form-title text-center">ADMIN PANEL FOR COURSE MANAGEMENT</h2>
+                    <h2 class="form-title text-center">Add Course</h2>
+                    <form class="form" role="form" id="addCourse_form">
+                        <div class="form-group">
+                            <input type="text" name="course_number" class="form-control" id="courseNumber" placeholder="Course Number (ie, COMP 4432)" required autocomplete="off" autofocus=""><br>
+                            <input type="text" name="course_name" class="form-control" id="courseName" placeholder="Course Name" required autocomplete="off" autofocus=""><br>
+                            <textarea name="description" class="form-control" id="courseDescription" placeholder="Enter course description..." rows="5"></textarea><br>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary login-btn float-right" id="addCourse"><strong>Add</strong></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <p id=course_stat></p>
+        </section>
+			  {% block footer %}
+        <!-- Footer Bottom -->
+        <footer class="footer-bottom course-footer">
+            <!-- Container Start -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-12 text-center margin-top-mid">
+                        <!-- Copyright -->
+                        <div class="copyright white">
+                            <p class="">Copyright © <a href="http://www.memphis.edu"> Silicon Orchard Ltd.</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+  {% endblock %}
+        <!-- JAVASCRIPTS -->
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+    </body>
+  {% endblock %}
