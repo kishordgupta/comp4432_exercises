@@ -43,6 +43,28 @@ $(document).ready(function() {
         });
     });
 
+    $('#addImage').click(function(e) {
+        var im_data = new FormData($('#profile_form')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/api/upload_image',
+            data: im_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+        }).done(function(res) {
+            if(res['status'] == 'success') {
+                set_status("#stat", '<b style="color: red;">'+res['message']+'</b>')
+            }
+            else {
+                set_status("#stat", '<b style="color: red;">'+res['message']+'</b>')
+            }
+        }).fail(function(err) {
+            set_status("#stat", '<b style="color: red;">Failed to upload image</b>');
+        });
+        e.preventDefault();
+    });
+
     $('#addCourse').click(function(e) {
         set_status("#course_stat", "");
         var cnum = document.getElementById("courseNumber").value;

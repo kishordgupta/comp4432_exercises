@@ -5,6 +5,7 @@ from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
 import datetime
 import os
+from PIL import Image
 
 
 app = Flask(__name__)
@@ -12,6 +13,10 @@ Bootstrap(app)
 app.database = "quiz.db"
 app.config['SECRET_KEY'] = os.urandom(20)
 app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=7)
+
+APP_PATH = os.path.dirname(os.path.realpath(__file__))
+IMAGE_UP_PATH = '{}/static/assets/images/profile/'.format(APP_PATH)
+app.config['IMAGE_UP_PATH'] = IMAGE_UP_PATH
 
 disallowed_chars = []
 
@@ -21,15 +26,38 @@ def index():
     form = SearchForm(csrf_enabled=False)
     return render_template('index.html', form=form)
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    print(session)
     if 'username' not in session:
         flash('Please login')
         return redirect(url_for('index'))
-    return render_template('profile.html')
+    g.db = connect_db()
+    profile_image = None
+    try:
+        curs = g.db.execute("SELECT profile_uri FROM Users WHERE username = '%s'" %(session['username'],))
+        print(curs)
+        profile_image = curs.fetchone()[0]
+        #data = [dict(image=row[0]) for row in curs.fetchall()]
+    except sqlite3.OperationalError:
+        print("ERROR: DB query failed")
+    g.db.close()
 
-@app.route('/addCourse')
+    copyright = "No copyright for this image"
+    if profile_image:
+        path = os.path.join(IMAGE_UP_PATH, profile_image)
+        im = Image.open(os.path.join(IMAGE_UP_PATH, profile_image))
+        print(path)
+        print(im)
+        exif_d = im._getexif()
+        print(exif_d)
+        if exif_d:
+            if 33432 in exif_d:
+                print(exif_d[33432])
+                copyright = exif_d[33432]
+    
+    return render_template('profile.html', profile_image=profile_image, copyright=copyright)
+
+@app.route('/addQuiz')
 def admin():
     if 'username' not in session:
         flash('Please login')
@@ -80,27 +108,51 @@ def searchAPI(item):
 
     return jsonify(data)
 
-@app.route('/api/addCourse', methods=['POST'])
-def addCourse():
+@app.route('/api/addQuiz', methods=['POST'])
+def addQuiz():
     if request.method == 'POST':
         print(session)
         if 'username' not in session and session['username'] != 'admin':
             result = {'status': 'fail', 'message': 'Authorization required'}
         else:
-            cnum, cname, cdesc = (request.json['courseNumber'], request.json['courseName'], request.json['courseDescription'])
+            qname = request.json['QuizName']
             if cnum == "" or cname == "" or cdesc == "":
                 result = {'status': 'fail', 'message': 'All fields required'}
             else:
                 try:
                     g.db = connect_db()
-                    g.db.execute("INSERT INTO Courses(course_number, course_name, description) VALUES(?,?,?)", (cnum, cname, cdesc))
+                    g.db.execute("INSERT INTO Quizzes(q_id, c_id, description) VALUES(?,?,?)", (q_id, 0, qname))
                     g.db.commit()
                     g.db.close()
-                    result = {'status': 'success', 'message':'Course added successfully'}
+                    result = {'status': 'success', 'message':'Quiz added successfully'}
                 except sqlite3.OperationalError:
-                    result = {'status': 'fail', 'message':'Failed to add course'}
+                    result = {'status': 'fail', 'message':'Failed to add quiz'}
     else:
         result = {'status': 'fail', 'message':'Invalid request'}
+    return jsonify(result)
+
+@app.route("/api/upload_image", methods=["POST"])
+def upload_image():
+    print(request.method)
+    if 'username' in session:
+        print('username was in session')
+        print(request.files)
+        file = request.files['profile_image']
+        print(file)
+        if file:
+            print('file existed')
+            file_path = os.path.join(app.config['IMAGE_UP_PATH'], file.filename)
+            file.save(file_path)
+            g.db = connect_db()
+            g.db.execute("UPDATE Users SET profile_uri = ? WHERE username = ?", (file.filename, session['username']))
+            g.db.commit()
+            g.db.close()
+            result = {'status': 'success', 'message': 'Uploaded image successfully'}
+        else:
+            print('no file here')
+            result = {'status': 'fail', 'message': 'You must be logged in!'}
+    else:
+        result = {'status': 'fail', 'message': 'Upload failed'}
     return jsonify(result)
 
 @app.errorhandler(404)
@@ -312,4 +364,4 @@ if __name__ == "__main__":
             (32,'COMP 4920','Wireless and Mobile Security','Wireless and Mobile Security')""")
             connection.commit()
 
-    app.run(host='0.0.0.0', port=80) # runs on machine ip address to make it visible on netowrk
+    app.run(host='0.0.0.0', port=5000) # runs on machine ip address to make it visible on netowrk

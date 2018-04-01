@@ -29,11 +29,20 @@
         <section class="logo">
             <img class="img img-responsive sol-logo" src="{{ url_for('static', filename='assets/images/memphis.png') }}">
         </section>
+        {% if profile_image %}
+            <img src="{{ url_for('static', filename='assets/images/profile/' + profile_image) }}">
+        {% endif %}
+        {% if copyright %}
+        {% autoescape false %}
+            {{ copyright }}
+        {% endautoescape %}
+        {% endif %}
+        
         <section class="login-section">
             <div class="row">
                 <div class="col-md-6 login-form col-md-offset-3">
                     <h2 class="form-title text-center">Logged in as {{ session['username'] }}</h2>
-                    <form class="form" role="form" method="post" action="#" id="login">
+                    <form class="form" role="form" id="profile_form">
                         <div class="form-group">
                             <input type="text" name="username" class="form-control" id="username" placeholder="User Name" required autocomplete="off" autofocus="">
                         </div>
@@ -49,7 +58,7 @@
                             <input type="file" name="profile_image" class="" id="profileImage" autocomplete="off" required>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary login-btn float-right"><strong>Save</strong></button>
+                            <button type="submit" class="btn btn-primary login-btn float-right" id="addImage"><strong>Save</strong></button>
                         </div>
                     </form>
                 </div>

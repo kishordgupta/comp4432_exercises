@@ -1,0 +1,67 @@
+id	first_name	last_name	email	username	password	created	last_login
+1	George	Orwell	gorwell@wherever.net	goreswell	7bf291424921dae56da906b65737bff97715824b21e82a4ea6cd41375245cedc:28		
+2	Bob	Geldof	bobby@lemon.com	floyd	33b1731da2a1c9fe6de3a08228e1236d5daea25db3f8a7b90e5d00f7ce5bf0d7:143		
+3	Mako	Iwamatsu	mako@nihon.net	mako	e102f3a10201611662b84ea17b56f26adc4ad92afa5174bf718f3221f4432207:6		
+4	Tonya	Harding	clubber@fail.org	kneecaps	9e088b2b686dc9b7cfc23629ccc971c3661a6e5e156ac29b780b68712a7b572e:72		
+5	Laura	Branigan	taken@above.net	nightcreature	7e736333ba133b4ba5b7ef2c1c4c071c0074dd3f9738284bd4e3334ffbed6121:215		
+6	Art	Bell	artbell@mindspring.com	wildcard	b8c926955a6da51faae90de49eea553ff87450fbefad949066519ec0e18f7052:70		
+7	Terrence	McKenna	hce@levity.com	dmtman	4dcedacaea5859a4ec3c92dc33dd1450b38a0a099e9555a3a8ecbb5776de9f81:123		
+8	BJ	Penn	bjpenn@fight.org	grndnpnd	3154b3ae9ed23d7bcd06c342ad95211fad2d457c80bd26b7be1767ac8babb98f:20		
+9	Anderson	Silva	aslva@fight.org	brknleg	819c0ee30c8f8d9e076ff13573b308839b0f6554d0b3ede2170253e3b0b27d39:102		
+10	Mike	Judge	shamir@innatech.com	pcloadltr	2a86e2dcd1b4aa66dcaf1ce77bd05521a96f2bd1b340cf9d1654f9808dbc0d18:25		
+11	Edmond	Dantes	ed@chateaudif.net	revenge	9c162ab5d3bd2fec11fe57ede1b1a099d9e87f73b144d56404c23ae859db3ebb:108		
+12	Maynard	Keenan	maynard@undertow.net	toolshed	54afc913205dd4f42fba36e29660eed52c2ef24c56f3afc8984570e4d2f1c8c7:115		
+13	Winston	Wolf	idrvfast@whatever.com	prblmslvr	b09432cf4fa7d311612e47f9acd1eecf77ed5792d5b458aeabce104916f8ad8d:193		
+14	Jules	Winnfield	shepherd@arf.net	ezekiel2517	a0a7cdb46844a7a61b0905527cc77683fe06fdd0074975474641019218cc2319:240		
+15	Vincent	Vega	vegan@orly.com	royalewithcheese	da51d43d9d654cd1c7bdb06e831fbbdd01731bc64c7e3c9f8d4c7f1e85234e79:96		
+c_id	course_number	course_name	description
+1	COMP 1900	CS1: Intro COMP Science	Introductory computer science topics
+2	COMP 2150	CS2: OOP and Data Structures	Object oriented programming paradigms and data structures
+3	COMP 2700	Discrete Structures	Introductory finite mathematics
+4	COMP 3050	Programming Languages	Foundations of programming language design paradigms
+5	COMP 3115	Database Process and Design	Introduction to relational and nosql databases
+6	COMP 3150	Programming in C/C++	C and C++ programming
+7	COMP 3160	Adv Data Struct/Algorithm	Advanced topics in data structures and introductory algorithms
+8	COMP 3410	Computer Org/Architecture	Foundations of computer design and assembly language
+9	COMP 3825	Network/Info Assurance	Topics in network security
+10	COMP 4001	Computer Programming	Computer programming
+11	COMP 4005	Web Design/Development	Designing web applications
+12	COMP 4030	Design/Analysis Algorithms	Topics in algorithms
+13	COMP 4040	Programming Languages	Foundations of programming language design paradigms
+14	COMP 4041	Intro To Compilers	Introduction to compiler design
+15	COMP 4081	Software Engineering	Software engineering principles
+16	COMP 4118	Introduction to Data Mining	Topics in data mining and processing
+17	COMP 4242	Intro Computer Graphics	Introduction to 2D/3D computer graphics
+18	COMP 4270	Operating Systems	Foundations of operating system principles
+19	COMP 4272	System Admin and Unix Prog	Foundations of system administration and programming in Unix environments
+20	COMP 4302	Web Service/Internet	Designing web services
+21	COMP 4310	Wireless Mobile Comp	Wireless Mobile Comp
+22	COMP 4410	Computer Security	Topics in computer security
+23	COMP 4420	Wireless and Mobile Security	Topics in wireless and mobile devie security
+24	COMP 4430	Digital Forensics	Digital Forensics
+25	COMP 4432	Secure Coding and Testing	Secure Coding and Testing
+26	COMP 4601	Models of Computation	Theory of computation
+27	COMP 4720	Intro Artificial Intelligence	Introductory topics in artificial intelligence
+28	COMP 4730	Expert Systems	Expert Systems
+29	COMP 4731	Data Visualization	Data Visualization
+30	COMP 4745	Intro to Machine Learning	Intro to Machine Learning
+31	COMP 4882	Capstone Software Proj	Capstone Software Proj
+32	COMP 4920	Wireless and Mobile Security	Wireless and Mobile Security
+u_id	q_id	score	taken_on
+1	1	67	2018-02-28 18:29:25.789041
+id	first_name	last_name	email	username	password	created	last_login
+1	George	Orwell	gorwell@wherever.net	goreswell	7bf291424921dae56da906b65737bff97715824b21e82a4ea6cd41375245cedc:28		
+2	Bob	Geldof	bobby@lemon.com	floyd	33b1731da2a1c9fe6de3a08228e1236d5daea25db3f8a7b90e5d00f7ce5bf0d7:143		
+3	Mako	Iwamatsu	mako@nihon.net	mako	e102f3a10201611662b84ea17b56f26adc4ad92afa5174bf718f3221f4432207:6		
+4	Tonya	Harding	clubber@fail.org	kneecaps	9e088b2b686dc9b7cfc23629ccc971c3661a6e5e156ac29b780b68712a7b572e:72		
+5	Laura	Branigan	taken@above.net	nightcreature	7e736333ba133b4ba5b7ef2c1c4c071c0074dd3f9738284bd4e3334ffbed6121:215		
+6	Art	Bell	artbell@mindspring.com	wildcard	b8c926955a6da51faae90de49eea553ff87450fbefad949066519ec0e18f7052:70		
+7	Terrence	McKenna	hce@levity.com	dmtman	4dcedacaea5859a4ec3c92dc33dd1450b38a0a099e9555a3a8ecbb5776de9f81:123		
+8	BJ	Penn	bjpenn@fight.org	grndnpnd	3154b3ae9ed23d7bcd06c342ad95211fad2d457c80bd26b7be1767ac8babb98f:20		
+9	Anderson	Silva	aslva@fight.org	brknleg	819c0ee30c8f8d9e076ff13573b308839b0f6554d0b3ede2170253e3b0b27d39:102		
+10	Mike	Judge	shamir@innatech.com	pcloadltr	2a86e2dcd1b4aa66dcaf1ce77bd05521a96f2bd1b340cf9d1654f9808dbc0d18:25		
+11	Edmond	Dantes	ed@chateaudif.net	revenge	9c162ab5d3bd2fec11fe57ede1b1a099d9e87f73b144d56404c23ae859db3ebb:108		
+12	Maynard	Keenan	maynard@undertow.net	toolshed	54afc913205dd4f42fba36e29660eed52c2ef24c56f3afc8984570e4d2f1c8c7:115		
+13	Winston	Wolf	idrvfast@whatever.com	prblmslvr	b09432cf4fa7d311612e47f9acd1eecf77ed5792d5b458aeabce104916f8ad8d:193		
+14	Jules	Winnfield	shepherd@arf.net	ezekiel2517	a0a7cdb46844a7a61b0905527cc77683fe06fdd0074975474641019218cc2319:240		
+15	Vincent	Vega	vegan@orly.com	royalewithcheese	da51d43d9d654cd1c7bdb06e831fbbdd01731bc64c7e3c9f8d4c7f1e85234e79:96		
