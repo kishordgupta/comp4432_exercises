@@ -46,9 +46,13 @@ def profile():
     if profile_image:
         path = os.path.join(IMAGE_UP_PATH, profile_image)
         im = Image.open(os.path.join(IMAGE_UP_PATH, profile_image))
+        size = 100,100
+        im.thumbnail(size)
+                img2 = im.rotate(-90, expand=True)
+                img2.seek(0)
         print(path)
         print(im)
-        exif_d = im._getexif()
+        exif_d = img2._getexif()
         print(exif_d)
         if exif_d:
             if 33432 in exif_d:
